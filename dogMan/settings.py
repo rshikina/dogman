@@ -20,17 +20,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-qr%da&ucn7bf1zhlj&ed*a$zudj&wn(%3r4#cny&pp0x(rl#vs"
+# SECRET_KEY = "django-insecure-qr%da&ucn7bf1zhlj&ed*a$zudj&wn(%3r4#cny&pp0x(rl#vs"
+import os
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
+
+
 
 ALLOWED_HOSTS = ['web-production-7d5ea.up.railway.app', '127.0.0.1']
 
 
 ## For example, for a site URL is at 'web-production-3640.up.railway.app'
 ## (replace the string below with your own site URL):
-CSRF_TRUSTED_ORIGINS = ['https://web-production-3640.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-7d5ea.up.railway.app']
 
 # During development/for this tutorial you can instead set just the base URL
 # CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
