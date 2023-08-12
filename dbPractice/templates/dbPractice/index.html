@@ -1,0 +1,29 @@
+{% extends 'dbPractice/base.html' %}
+<title>
+{% block title %}
+    Practicing database dude
+{% endblock %}
+</title>
+{% block left-column %}
+    <label id="mathProblem"></label>
+    <br>
+    <button type="button" class="btn btn-success btn-log">GET</button>
+    <br>
+    <br>
+    <button type="button" class="btn second-button btn-success btn-log">TRY</button>
+    <br>
+    <ul id="seconds">
+
+    <label id="sayHello">{{ sayHello }}</label>
+
+    </ul>
+
+{% endblock %}
+
+{% block right-column %}
+
+    {% csrf_token %}
+    <ul id="right">
+
+    </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'practice_ajax/ajax_base.html' %}
+<title>
+{% block title %}
+    Practicing Ajax dude
+{% endblock %}
+</title>
+{% block left-column %}
+    <button type="button" class="btn btn-success btn-log">GET</button>
+    <ul id="seconds">
+
+    </ul>
+{% endblock %}
+
+{% block right-column %}
+
+    {% csrf_token %}
+    <ul id="right">
+
+    </ul>
+{% endblock %}

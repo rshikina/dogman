@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/practice_ajax_styles.css' %}">
+    <title>{% block title %} | Basic Ajax Demo {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" 
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div class = "container">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center mt-5">
+                {% block left-column %}
+                {% endblock %}
+            </div>
+            <div class="col-6 text-center mt-5">
+                {% block right-column %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <script type = "text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+    <script src="{% static 'js/practice_ajax_main.js'    %}"></script>
+</body>
+
+</html>
