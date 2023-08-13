@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def landingIndex(request):
+def index(request):
     return HttpResponse("Landing Page!")
 
