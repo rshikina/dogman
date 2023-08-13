@@ -1,0 +1,231 @@
+<html>
+    
+<head>
+
+</head>
+    <body>
+        <div id="mainDiv">
+
+            <p id="mainP"></p>
+            <ul id="list"></ul>
+        </div>
+
+
+        <script>
+
+
+
+///this is singleton pattern of function (IIFE), but the catch is this returns a function,
+////which makes it into a function factory, in other words, a constructor function.
+
+
+            var scoreClassA = function(){
+                // var score = 3;
+                var myScore = function(){
+                    var score = 0;
+                    this.makeFunc = function(){
+
+                    }
+                    function returnScore(){
+                        return score;
+                    }
+                    function newScore(x){
+                        score = x;
+                    }
+                    return {
+                        getScore: returnScore,
+                        setScore: newScore
+                    }
+                }
+                return myScore;
+            }()
+
+            var newObject = new scoreClassA();
+            newObject.setScore(200000);
+            let element5 = document.createElement('p');
+            element5.setAttribute('id', 'p5');
+            document.getElementById('mainDiv').appendChild(element5);
+            document.getElementById('p5').innerHTML = "This from scoreClassA: " + newObject.getScore();
+
+            var makeTest = new scoreClassA();
+            var test3 = new scoreClassA();
+
+
+
+            /////// so now going to try to add a bunch of objecgts of scoreClassA to see fi they retain variables.
+            let listMaker = document.getElementById('list');
+            let l1 = document.createElement('li');
+            l1.setAttribute('id', '1');
+            l1.innerHTML = "setting newObject1: " + newObject.getScore();
+
+            listMaker.appendChild(l1);
+
+
+            newObject.setScore(30);
+
+            let l2 = document.createElement('li');
+            l2.setAttribute('id', '2');
+            l2.innerHTML = "setting newObject2: " + newObject.getScore();
+            listMaker.appendChild(l2);
+
+            for (var i = 0; i < 20; i++){
+                sumNum = document.createElement('li');
+                sumNum.setAttribute('id', 'l' + i);
+                sumNum.innerHTML = "test";
+                listMaker.appendChild(sumNum);
+                let varName = 'l' + i;
+                varName = document.getElementById(varName);
+            }
+
+            document.getElementById('l5').innerHTML = "Changed";
+            l6.innerHTML = "newobect: " + newObject.getScore();
+            newObject.setScore(99);
+            l7.innerHTML = "changed newobject " + newObject.getScore();
+            l8.innerHTML = "maketest " + makeTest.getScore();
+            makeTest.setScore(-999);
+            l9.innerHTML = "changed maketest " + makeTest.getScore();
+            l10.innerHTML = "newobject not changed: " + newObject.getScore();
+            l11.innerHTML = "created new " + test3.getScore();
+            let test4 = new scoreClassA();
+            l12.innerHTML = "Test4: " + test4.getScore();
+            test4.setScore(1234);
+            l13.innerHTML = "test4 changed: " + test4.getScore();
+            l14.innerHTML = "newObejct " + newObject.getScore();
+            l15.innerHTML = "test3 " + test3.getScore();
+            l16.innerHTML = "maketest " + makeTest.getScore();
+            l17.innerHTML = "test4 " + test4.getScore();
+            
+
+// so , now do you understand what html5 game devleopment guy is doing? you've spent 2 entire days on this already.
+//but why does the constructor function stop when its called? it just sends back the definition and doesn't execute?
+// so if singleton function doesn't work when calling it because it only gives def of function, you must call function with IIFE
+// to make it run. i'm not sure why that is. seems like you are calling the funciton so it should run when you create a new object
+// with it. ????
+            
+
+
+
+            ///////////////////
+            //what if you did the same thing, but used a constructor function, not a singleton function?
+           //ie using a function is that is not IIFE.
+           //Result: doesn't work. function does not execute. i don't know why. it is only copy and pasted to the variable.
+           //but if you add parens, it suddenly works, at the end of the function: (){}().
+
+           //holy shit. i fixed it. so make the func you send inside called myScore an IIFE, that gives the var the power of
+           //the actual function, not just the text of the func. then you can call the variable by it's methods.
+
+           ///holy fuck. that took a long time, like another 5 hours? so now do you understand what is going on?
+           
+           var scoreClassAA = function(){
+                var myScore = function(){
+                    var score = 3;
+                    this.makeFunc = function(){
+
+                    }
+                    function returnScore(){
+                        return score;
+                    }
+                    function newScore(x){
+                        score = x;
+                    }
+                    return {
+                        getScore: returnScore,
+                        setScore: newScore
+                    }
+                }();
+                return myScore;
+            }
+
+            var makeTestAA = new scoreClassAA();
+            let element6 = document.createElement('p');
+            element5.setAttribute('id', 'p6');
+            document.getElementById('mainDiv').appendChild(element6);
+            document.getElementById('p6').innerHTML = "This from scoreClassAA new function: " + makeTestAA.getScore();
+
+           
+            ///////////////// reduced version of singleton function
+            var scoreClassB = function(){
+                var aScore = function(){
+
+                }
+                return aScore;
+            }()
+            var makeTest2 = new scoreClassB();
+
+///////////////////// singleton function example....
+
+            var scoreClass = function(){
+                var score = 3;
+                function returnScore(){
+                    return score;
+                }
+                function newScore(x){
+                    score = x;
+                }
+                return {
+                    getScore: returnScore,
+                    setScore: newScore
+                }
+            }()
+
+
+/////// constructor function example....
+
+            var scoreboard = function(){
+                var score = 10;
+                function returnScore() {
+                    return score;
+                }
+                function setScore(x) {
+                    score = x;
+                }
+                return {
+                    getScore: returnScore,
+                    setScore: setScore
+                }
+            }
+
+            //// using the constructor fucntion.
+            let score = new scoreboard();
+
+            document.getElementById("mainP").innerHTML = "help";
+            let element = document.createElement('p');
+            element.setAttribute('id', 'p2');
+            document.getElementById('mainDiv').appendChild(element);
+            document.getElementById('p2').innerHTML = score;
+            let element2 = document.createElement("p");
+            element2.setAttribute('id', 'p1');
+            document.getElementById('mainDiv').appendChild(element2);
+            document.getElementById("mainP").innerHTML = score.getScore();
+            score.setScore(1000);
+            document.getElementById('p1').innerHTML = score.getScore();
+            let sampleScore = new scoreboard();
+
+
+            //// using singleton function: you see, becuaase it is singleton, you don't even need to create the function.
+            ///it was created upon definition. so it exits. you just call its methods.
+            // this is kind of why the constructor function with a class inside doesn't work. you have to call the function, and then 
+            // it doesn't call the class. but if it is made into a singleton function, it is called immediately and sends the function
+            // to the variable where it can be used.
+
+            l18.innerHTML = scoreClass.getScore();
+            scoreClass.setScore(98);
+            l19.innerHTML = scoreClass.getScore();
+
+
+
+            ///////
+
+
+            let element3 = document.createElement('p');
+            element3.setAttribute('id', 'p3');
+            document.getElementById('mainDiv').appendChild(element3);
+            document.getElementById('p3').innerHTML = scoreClass.getScore();
+            let element4 = document.createElement('p');
+            element4.setAttribute('id', 'p4');
+            document.getElementById('mainDiv').appendChild(element4);
+            document.getElementById('p4').innerHTML = "from p4";
+
+            </script>
+    </body>
+</html>
