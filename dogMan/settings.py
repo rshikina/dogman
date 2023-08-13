@@ -48,6 +48,7 @@ CSRF_TRUSTED_ORIGINS = ['https://web-production-7d5ea.up.railway.app', 'https://
 INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "hello.apps.HelloConfig",
+    "landingPage.apps.LandingpageConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
