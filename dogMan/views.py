@@ -1,6 +1,7 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
+from ../ import views
 
-
-def home(request):
-    return HttpResponse("<h1>You made it the landing page.</h1>")
+def goHome(request):
+    return redirect(home)
 

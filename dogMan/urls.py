@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from polls import views
-from . import views
+
+import polls
+import practice_ajax
+import dbPractice
+import landingPage
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", include("landingPage.urls")),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
 ]

@@ -48,7 +48,7 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
 
 def home(request):
-    return HttpResponse("<h1>You made it to the landing page.</h1>")
+    return HttpResponse("<h1>The landing page.</h1>")
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
