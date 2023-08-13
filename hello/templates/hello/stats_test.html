@@ -1,0 +1,17 @@
+{% block stats %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/stats.css' %}">
+
+
+<div id="statsView">
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeStats()">&times;</a>
+    <h1>Work done</h1>
+    <p id="num_problems">Number of problems done in the past:</p>
+    <p style="visibility:hidden">How many wrong</p>
+    <p style="visibility:hidden">how difficult the problems</p>
+</div>
+
+<script src="{% static 'js/stats.js' %}"></script>
+
+{% endblock %}

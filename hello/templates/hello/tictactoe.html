@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+        <style>
+            .centering-game{
+                margin-top: 40px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+            .wrapper{
+                grid-column: 2;
+                margin: auto;
+                padding: 0;
+                border: 10px outset paleturquoise;
+                border-radius: 10px;
+                display: inline-grid;
+                grid-template-columns: repeat(3, 100px);
+                grid-template-rows: initial;
+                grid-auto-flow: initial;
+                grid-auto-rows: 100px;
+            }
+            [class ^= 'grid']{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 5em;
+                font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+            [class ^= 'grid']:hover{
+                background-color: darkolivegreen;                
+            }
+
+            .grid-block-1{
+                border-radius: 0px 0 0 0;   
+                border: solid orangered;
+                border-width: 3px 0 0 3px;
+
+            }
+            .grid-block-2{
+                border: solid orangered;
+                border-width: 3px 3px 0 3px;
+            }
+            .grid-block-3{
+                border-radius: 0 0px 0 0;
+                border: solid orangered;
+                border-width: 3px 3px 0 0;
+            }
+            .grid-block-4{
+                border: solid orangered;
+                border-width: 3px 0 3px 3px;
+            }
+            .grid-block-5{
+                border: 3px solid orangered;
+            }
+            .grid-block-6{
+                border: solid orangered;
+                border-width: 3px 3px 3px 0;
+            }
+            .grid-block-7{
+                border-radius: 0 0 0 0px;
+                border: solid orangered;
+                border-width: 0 0 3px 3px;
+            }
+            .grid-block-8{
+                border: solid orangered;
+                border-width: 0px 3px 3px 3px;
+            }
+            .grid-block-9{
+                border-radius: 0 0 0px 0;
+                border: solid orangered;
+                border-width: 0 3px 3px 0;
+            }
+            .div-button{
+                display:flex;
+            }
+            .replay-btn{
+                margin: 100px auto;
+            }
+            
+
+
+        </style>
+    </head>
+    <body>
+        <div class="centering-game">
+            <div class="wrapper">
+                <div class="grid-block-1" id="1ax"></div>
+                <div class="grid-block-2" id="2an"></div>
+                <div class="grid-block-3" id="3ay"></div>
+                <div class="grid-block-4" id="1bn"></div>
+                <div class="grid-block-5" id="2bc"></div>
+                <div class="grid-block-6" id="3bn"></div>
+                <div class="grid-block-7" id="1cy"></div>
+                <div class="grid-block-8" id="2cn"></div>
+                <div class="grid-block-9" id="3cx"></div>
+            </div>
+        </div>
+        <div class="div-button">
+            <button class="replay-btn btn btn-primary">replay</button>
+        </div>
+    <script>
+
+        var p1 = {
+            alpha: {},
+            numeral: {},
+            axis: {},
+            moves: {},
+            // checkWin: statusFunction(p1)
+            totalA: 0,
+            totalB: 0,
+            totalC: 0, 
+            total1: 0, 
+            total2: 0, 
+            total3: 0,
+            totalX: 0,
+            totalY: 0,
+            center: 0,
+            winner: false,
+        }
+
+        var p2 = {
+            alpha: {},
+            numeral: {},
+            axis: {},
+            moves: {},
+            // checkWin: statusFunction
+            totalA: 0,
+            totalB: 0,
+            totalC: 0, 
+            total1: 0, 
+            total2: 0, 
+            total3: 0,
+            totalX: 0,
+            totalY: 0,
+            center: 0,
+            winner: false,
+        }
+
+        function statusFunction(player, ev){
+            // var len = Object.keys(player.alpha).length;
+            // len++;
+            var alpha, numeral, axis;
+            numeral = ev.target.id[0];
+            alpha = ev.target.id[1];
+            axis = ev.target.id[2];
+            switch (numeral) {
+                case '1': player.total1++;
+                    if (player.total1 === 3){
+                        return true;
+                    }
+                    break;
+                case '2': player.total2++;
+                    if (player.total2 === 3){
+                        return true;
+                    }
+                    break;
+                case '3': player.total3++;
+                    if (player.total3 === 3){
+                        return true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            switch (alpha){
+                case 'a': player.totalA++;
+                    if (player.totalA === 3){
+                        return true;
+                    }
+                    break;
+                case 'b': player.totalB++;
+                    if (player.totalB === 3){
+                        return true;
+                    }
+                    break;
+                case 'c': player.totalC++;
+                    if (player.totalC === 3){
+                        return true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            switch (axis){
+                case 'x': player.totalX++;
+                    if ((player.totalX === 2) && (player.center === 1)){
+                        return true;
+                    }
+                    break;
+                case 'y': player.totalY++;
+                    if ((player.totalY === 2) && (player.center === 1)){
+                        return true;
+                    }
+                    break;
+                case 'c': player.center++;
+                    if ((player.totalX === 2) || (player.totalY === 2)){
+                        return true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+        var player1 = "x";
+        var player2 = "o";
+        var play = "";
+        var count = 0;
+
+
+        var block1 = document.getElementById("1ax");
+        var block2 = document.getElementById("2an");
+        var block3 = document.getElementById("3ay");
+        var block4 = document.getElementById("1bn");
+        var block5 = document.getElementById("2bc");
+        var block6 = document.getElementById("3bn");
+        var block7 = document.getElementById("1cy");
+        var block8 = document.getElementById("2cn");
+        var block9 = document.getElementById("3cx");
+        
+
+        block1.addEventListener("click", select);
+        block2.addEventListener("click", select);
+        block3.addEventListener("click", select);
+        block4.addEventListener("click", select);
+        block5.addEventListener("click", select);
+        block6.addEventListener("click", select);
+        block7.addEventListener("click", select);
+        block8.addEventListener("click", select);
+        block9.addEventListener("click", select);
+
+        var replayBtn = document.getElementsByClassName("replay-btn");
+        
+        replayBtn[0].addEventListener('click', () => {
+
+            play = "";
+            count = 0;
+            p1.total1 = 0;
+            p1.total2 = 0;
+            p1.total3 = 0;
+            p1.totalA = 0;
+            p1.totalB = 0;
+            p1.totalC = 0;
+            p1.totalX = 0;
+            p1.totalY = 0;
+            p1.center = 0;
+            p1.winner = false;
+
+            p2.total1 = 0;
+            p2.total2 = 0;
+            p2.total3 = 0;
+            p2.totalA = 0;
+            p2.totalB = 0;
+            p2.totalC = 0;
+            p2.totalX = 0;
+            p2.totalY = 0;
+            p2.center = 0;
+            p2.winner = false;
+            
+            block1.style.pointerEvents = "auto";
+            block2.style.pointerEvents = "auto";
+            block3.style.pointerEvents = "auto";
+            block4.style.pointerEvents = "auto";
+            block5.style.pointerEvents = "auto";
+            block6.style.pointerEvents = "auto";
+            block7.style.pointerEvents = "auto";
+            block8.style.pointerEvents = "auto";
+            block9.style.pointerEvents = "auto";
+            
+            if(block1.hasChildNodes()){
+                block1.removeChild(block1.firstChild);
+            }
+            if(block2.hasChildNodes()){
+                block2.removeChild(block2.firstChild);
+            }
+            if(block3.hasChildNodes()){
+                block3.removeChild(block3.firstChild);
+            }
+            if(block4.hasChildNodes()){
+                block4.removeChild(block4.firstChild);
+            }
+            if(block5.hasChildNodes()){
+                block5.removeChild(block5.firstChild);
+            }
+            if(block6.hasChildNodes()){
+                block6.removeChild(block6.firstChild);
+            }
+            if(block7.hasChildNodes()){
+                block7.removeChild(block7.firstChild);
+            }
+            if(block8.hasChildNodes()){
+                block8.removeChild(block8.firstChild);
+            }
+            if(block9.hasChildNodes()){
+                block9.removeChild(block9.firstChild);
+            }
+        })
+
+        function select(ev){
+            count++;
+            var player;
+            var winOrLose = false;
+
+            if (ev.target.hasChildNodes()){
+                count++;
+                return;
+            }
+            var p = document.createElement("p");
+            
+            if (count%2 === 0){
+                play = player2;
+                winOrLose = statusFunction(p2, ev);
+                player2.moves = document.getElementById(ev.target.id).id;
+            }
+            else { play = player1; 
+                winOrLose = statusFunction(p1, ev); 
+            }
+            p.innerHTML = play;
+            ev.target.appendChild(p);   //apppend paragraph
+            
+
+            if (winOrLose) {
+                block1.style.pointerEvents = "none";
+                block2.style.pointerEvents = "none";
+                block3.style.pointerEvents = "none";
+                block4.style.pointerEvents = "none";
+                block5.style.pointerEvents = "none";
+                block6.style.pointerEvents = "none";
+                block7.style.pointerEvents = "none";
+                block8.style.pointerEvents = "none";
+                block9.style.pointerEvents = "none";
+                setTimeout(function(){
+                    alert(play + " Wins!");
+                }, 0) 
+            }
+            // play = document.getElementById(ev.target.id).id + play;
+            // document.getElementById(ev.target.id).id = play;    //set new id
+            
+        }
+
+
+
+    // if (document.getElementById(ev.target.id).id === document.getElementById){
+    //             alert("block1 is x");
+    //         }
+    //     }
+    //     function checkWin(){
+    //         if (block1.p.innerText == 'x'){
+    //             alert("block1 is x");
+    //         }
+    //     }
+
+
+            // alert(document.getElementById(play).id);    //test
+// winning combos: 6, 12, 15, 18, 24
+// add up the squares taken. if either play gets any of these totals, they 
+// possibly could win: 6 with 3 level 1s,
+// 12 with 3 level 2s,
+// 24 with 3 level 3s.
+// 15 with 1, 5, and 9 or 3, 5, 7.
+// 18 with levels 1, 2, 3.
+// 12 with 1, 2, 3 levels.
+// 15 with center squre, levels 1, 2, 3
+
+
+// 05 10 15    30
+// 20 25 30    75
+// 35 40 45    120
+
+// 60 75 90
+// ---
+// 01 33 03    37  without center
+// 54 05 56    115 with center
+// 02 36 04    42  without center
+
+// 57 74 63    without center/ with center/ without center
+
+// 10 with center            10
+
+// maybe just better to count, three as for top, three bs for bottom, etc.
+// if three as, or 3 bs, or 3 cs, win. if abc1 or abc2 or abc3, win
+// if a1b2c3 or a3b2c1 win.
+// so every move, check if a, how many as.
+//
+// so possible logic: 
+// each person has a, b, and c; 1, 2, 3; and x and y
+// each block has alpha, numeral, and axis.
+// if a, how many a, if 3, player wins.
+// also if 1, how many 1. if 3, player wins.
+// also if x, how many x. if three, player wins.
+
+
+
+
+
+    
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    </body>
+
+</html>
+
+

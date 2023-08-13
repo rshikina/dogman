@@ -1,0 +1,40 @@
+<html>
+    
+<head>
+
+</head>
+    <body>
+        <div id="mainDiv">
+            <p id="mainP"></p>
+        </div>
+
+
+        <script>
+
+            var scoreboard = function(){
+                var score = 10;
+                function returnScore() {
+                    return score;
+                }
+                function setScore(x) {
+                    this.score = x;
+                }
+                return {
+                    getScore: returnScore,
+                    setScore: setScore
+                }
+            }()
+            document.getElementById("mainP").innerHTML = scoreboard.getScore();
+
+            scoreboard.setScore(1000);
+            let element = document.createElement('p');
+            element.setAttribute('id', 'p2');
+            document.getElementById('mainDiv').appendChild(element);
+            document.getElementById('p2').innerHTML = "from p2";
+            document.getElementById('mainDiv').appendChild(document.createElement("p").setAttribute('id', 'p1'))
+            document.getElementById("mainP").innerHTML = scoreboard.getScore();
+            document.getElementById('p2').innerHTML = "new";
+
+            </script>
+    </body>
+</html>

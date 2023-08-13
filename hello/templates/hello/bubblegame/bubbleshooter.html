@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+      
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Bubble Shooter</title>
+        <link rel="stylesheet" href="{% static 'CSS/bubbleshoot_css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'CSS/bubbleshoot_css/game.css' %}">
+        <script src="{% static 'JS/bubbleshoot_js/modernizr.js' %}"></script>
+        <script src="{% static 'JS/bubbleshoot_js/yepnope.1.5.4.js' %}"></script>
+
+
+        <script>
+
+            yepnope([
+                {
+                    load: "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js",
+                    complete: function () {
+                        if ( ! window.jQuery ) {
+                            yepnope( '../../../static/JS/bubbleshoot_js/jquery-3.6.0.js' );
+                        }
+                    }
+                },
+                "../../../static/JS/bubbleshoot_js/ui.js", "../../../static/JS/bubbleshoot_js/bubble.js", 
+                "../../../static/JS/bubbleshoot_js/board.js", "../../../static/JS/bubbleshoot_js/collision-detection.js",
+                {
+                    load : '../../../static/JS/bubbleshoot_js/game.js',
+                    complete: function () {
+                        jQuery(function () {
+                            var game = new BubbleShoot.Game();
+                            game.init();
+                       });
+                    }
+                }
+            ]);
+    
+            </script>
+    </head>
+    <body>
+        
+        <div id="page">
+            <div id="top_bar"></div>
+            <div id="game">
+                <div id="board"></div>
+                <div id="bubbles_remaining"></div>
+            </div>
+            <div id="footer_bar"></div>
+                <div id="start_game" class="dialog">
+                    <div id="start_game_message">
+                        <h2 class="headline">Start a new game</h2>
+                    </div>
+                    <div class="but_start_game button">
+                        New Game
+                    </div>
+                </div>
+        </div>
+       
+    </body>
+</html>

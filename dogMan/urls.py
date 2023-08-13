@@ -21,9 +21,11 @@ import polls
 import practice_ajax
 import dbPractice
 import landingPage
+import hello
 
 urlpatterns = [
     path("", include("landingPage.urls")),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
+    path("calculator/", include("hello.urls")),
 ]

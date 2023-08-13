@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
 
-ALLOWED_HOSTS = ['web-production-7d5ea.up.railway.app', '.themathpractice.org']
+ALLOWED_HOSTS = ['web-production-7d5ea.up.railway.app', '.themathpractice.org', '127.0.0.1']
 
 
 ## For example, for a site URL is at 'web-production-3640.up.railway.app'
@@ -47,6 +47,7 @@ CSRF_TRUSTED_ORIGINS = ['https://web-production-7d5ea.up.railway.app', 'https://
 
 INSTALLED_APPS = [
     "polls.apps.PollsConfig",
+    "hello.apps.HelloConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

@@ -1,0 +1,84 @@
+{% extends "hello/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="{% static 'CSS/index_styles.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/stats.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+        <div class="body-wrapper">
+          <!-- The overlay -->
+          <div id="myNav" class="overlay">
+              <!-- Button to close the overlay navigation -->
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <!-- Overlay content -->
+              <div class="overlay-content">
+              <a href="{% url 'hello:index' %}">Home</a>
+              <a href="{% url 'hello:bubbleshooter' %}">Bubble Shooter</a>
+              <a href="{% url 'hello:tictactoe' %}">Tic Tac Toe</a>
+              </div>
+          </div>
+            <div id="stats-window">
+
+
+                <div id="statsView">
+                    <!-- Button to close the overlay navigation -->
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeStats()">&times;</a>
+                    <h1>Work you've done:</h1>
+                    <p id="num_problems">Actually, you haven't attempted any problems yet.</p>
+                    <p id="num_right" style="visibility:hidden">True</p>
+                    <p id="num_wrong" style="visibility: hidden">True</p>
+                    <p style="visibility:hidden">how difficult the problems</p>
+                </div>
+                {% block stats %}{% endblock %}
+            </div>
+            <div class="center-content">
+                <div id="topDiv">
+                  
+                </div>
+                <div id="headingDiv">
+                    <h2 id="headline">Multiplication wizard</h2>
+                    <span id="stats-icon" class="material-symbols-outlined" onclick="openStats()">leaderboard</span>
+                    <span id="menu-icon" class="material-symbols-outlined" onclick="openNav()">menu</span>
+
+                </div>
+                <div id="pinpad">
+                    <form>
+                        <div class="infoSection">
+                            <label id="mathProblem" class="labelText"></label>
+                            <input type="text" id="mainInput" readonly/></br>
+                        </div>
+                        <label id="results">results</label>
+                        <input type="button" value="1" id="1" class="pinButton calc"/>
+                        <input type="button" value="2" id="2" class="pinButton calc"/>
+                        <input type="button" value="3" id="3" class="pinButton calc"/><br>
+                        <input type="button" value="4" id="4" class="pinButton calc"/>
+                        <input type="button" value="5" id="5" class="pinButton calc"/>
+                        <input type="button" value="6" id="6" class="pinButton calc"/><br>
+                        <input type="button" value="7" id="7" class="pinButton calc"/>
+                        <input type="button" value="8" id="8" class="pinButton calc"/>
+                        <input type="button" value="9" id="9" class="pinButton calc"/><br>
+                        <input type="button" value="clear" id="clearLt" class="pinButton clear"/>
+                        <input type="button" value="0" id="0" class="pinButton calc"/>
+                        <input type="button" value="clear" id="clearRt" class="pinButton clear"/><br>
+                        {% csrf_token %}
+                        <input type="button" value="enter" id="enter" class="pinButton enter"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="logDiv">
+            <h1>TouchStart and Click event</h1>
+            Log: <pre id = "log" style="border: 1px solid #ccc;
+            height: 200px;
+            width: 600px;
+            overflow: scroll;"></pre>
+        </div>
+         <script src="{% static 'JS/index_script.js' %}"></script>
+
+
+{% endblock %}
