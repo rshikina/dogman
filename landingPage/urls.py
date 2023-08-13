@@ -6,5 +6,5 @@ from . import views
 app_name = "landingPage"
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.home, name="home"),
 ]
