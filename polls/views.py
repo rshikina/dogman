@@ -6,7 +6,7 @@ from django.views import generic
 
 
 class IndexView(generic.ListView):
-    template_name = "polls/pollsIndex.html"
+    template_name = "polls/"
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
@@ -46,9 +46,6 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
-
-def home(request):
-    return HttpResponse("<h1>The landing page.</h1>")
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
