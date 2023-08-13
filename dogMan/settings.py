@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
 
-ALLOWED_HOSTS = ['web-production-7d5ea.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-7d5ea.up.railway.app', 'themathpractice.org', '127.0.0.1']
 
 
 ## For example, for a site URL is at 'web-production-3640.up.railway.app'
