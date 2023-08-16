@@ -9,8 +9,6 @@ body {
     height: 738px;
 }
 #top_bar{
-    display: inline;
-    justify-content: flex-end;
     position: absolute;
     left:0;
     top: 0;
@@ -22,11 +20,10 @@ body {
 }
 
 #homeBtn {
-    justify-content: center;
-    background-color: #369;
+    color: #369;
     font-size: large;
-    border: none;
-    color: #fff;
+    text-decoration-color: aliceblue;
+    display: block;
 }
 
 #game{
