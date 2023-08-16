@@ -6,4 +6,6 @@
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<input type=button onClick="location.href='{% url 'polls:detail' question.id %}'" value="Vote again?">
+
+<input type=button onClick="location.href='{% url 'landingPage:home' %}'" value="Home">

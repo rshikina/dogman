@@ -48,6 +48,3 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
 
-def pageOne(request):
-    return HttpResponse("<h1>This is page one.</h1>")
-
