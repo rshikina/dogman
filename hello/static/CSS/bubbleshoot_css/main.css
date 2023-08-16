@@ -9,8 +9,6 @@ body {
     height: 738px;
 }
 #top_bar{
-    display: inline;
-    justify-content: flex-end;
     position: absolute;
     left:0;
     top: 0;
@@ -18,11 +16,12 @@ body {
     height: 700px;
     background-color: #369;
     color: #fff;
-
 }
 
 #homeBtn {
-    justify-content: center;
+    position: relative;
+    top: 20px;
+    left: 20px;
     background-color: #369;
     font-size: large;
     border: none;

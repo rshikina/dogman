@@ -79,7 +79,15 @@
             .replay-btn{
                 margin: 100px auto;
             }
-            
+            .home-btn{
+                margin: 100px auto;
+            }
+            #buttonFrame{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
 
 
         </style>
@@ -98,8 +106,13 @@
                 <div class="grid-block-9" id="3cx"></div>
             </div>
         </div>
-        <div class="div-button">
-            <button class="replay-btn btn btn-primary">replay</button>
+        <div id="buttonFrame">
+            <div class="div-button">
+                <button class="replay-btn btn btn-primary">replay</button>
+            </div>
+            <div class="div-button">
+                <button class="home-btn btn btn-primary" onclick="location.href='{% url 'landingPage:home' %}'">home</button>
+            </div>
         </div>
     <script>
 
