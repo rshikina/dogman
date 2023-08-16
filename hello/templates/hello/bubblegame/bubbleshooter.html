@@ -43,7 +43,9 @@
     <body>
         
         <div id="page">
-            <div id="top_bar"></div>
+            <div id="top_bar">
+            <input type="text" id="homeBtn" onclick="location.href='{% url 'landingPage:home' %}'" value="Home">
+		</div>
             <div id="game">
                 <div id="board"></div>
                 <div id="bubbles_remaining"></div>

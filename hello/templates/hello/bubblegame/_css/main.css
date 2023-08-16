@@ -14,9 +14,15 @@ body {
     top: 0;
     width: 1000px;
     height: 700px;
-    background-color: #369;
+    background-color: #000;
     color: #fff;
 
+}
+#homeBtn {
+    color: #369;
+    font-size: large;
+    text-decoration-color: aliceblue;
+    display: block;
 }
 #game{
     position: absolute;
