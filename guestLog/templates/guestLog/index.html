@@ -1,0 +1,30 @@
+<style>
+    #titleBar{
+        color: darkblue;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        justify-content: space-around;
+        border: 1px solid blue;
+        border-radius: 10px;
+    }
+   #titleLabel{
+        font-size:x-large; 
+   }
+
+</style>
+<div id="titleBar">
+    <h1>Title page:</h1>
+        <label id="titleLabel">Hello</label>
+</div>
+        <p>Making a guest log</p>
+<input type="text" id="inputText">
+<input type="button" id="enterBtn" onclick="getInput()" value="Enter"></button>
+
+<script>
+    function getInput(){
+        addTitle = document.getElementById("inputText").value;
+        document.getElementById("titleLabel").innerHTML = addTitle;
+    }
+</script>

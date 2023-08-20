@@ -6,5 +6,5 @@ from . import views
 app_name = "guestLog"
 
 urlpatterns = [
-    path("", views.home, name="index"),
+    path("", views.index, name="index"),
 ]

@@ -22,10 +22,12 @@ import practice_ajax
 import dbPractice
 import landingPage
 import hello
+import guestLog
 
 urlpatterns = [
     path("", include("landingPage.urls")),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
     path("calculator/", include("hello.urls")),
+    path("guestLog/", include("guestLog.urls")),
 ]

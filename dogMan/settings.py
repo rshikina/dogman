@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "polls.apps.PollsConfig",
     "hello.apps.HelloConfig",
     "landingPage.apps.LandingpageConfig",
+    "guestLog.apps.GuestlogConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
