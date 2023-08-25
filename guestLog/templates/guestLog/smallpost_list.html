@@ -1,0 +1,25 @@
+<h1>Small post list</h1>
+
+<h2>Post List</h2>
+{% if post_list %}
+    <ul>
+        {% for post in post_list %}
+        <li>
+            <a href="{{ post.get_absolute_url }}">{{ post.small_post }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no posts!</p>
+
+{% endif %}
+
+
+<h1>This section is a form</h1>
+<form action="{% url 'guestLog:index' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <input type="text" id="inputText">
+    </fieldset>
+    <input type="submit" value="Submit">
+    </form>

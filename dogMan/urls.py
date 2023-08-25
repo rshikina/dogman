@@ -30,4 +30,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("calculator/", include("hello.urls")),
     path("guestLog/", include("guestLog.urls")),
+    path("practiceAjax/", include("practice_ajax.urls")),
 ]

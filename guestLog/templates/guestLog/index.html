@@ -22,6 +22,35 @@
 <input type="text" id="inputText">
 <input type="button" id="enterBtn" onclick="getInput()" value="Enter"></button>
 
+
+<h1>This section lists titles from a database</h1>
+{% if titles_list %}
+    <ul>
+        {% for title in titles_list %}
+            <li>{{ title.submitTitle_text }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+<h1>This section is a form</h1>
+<form action="{% url 'guestLog:index' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <input type="text" id="inputText">
+        <input type="button" id="enterBtn" onclick="getInput()" value="Enter">
+    </fieldset>
+    <input type="submit" value="Vote">
+    </form>
+
+
+
+
+
+
+
 <script>
     function getInput(){
         addTitle = document.getElementById("inputText").value;

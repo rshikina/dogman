@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "hello.apps.HelloConfig",
     "landingPage.apps.LandingpageConfig",
     "guestLog.apps.GuestlogConfig",
+    "practice_ajax.apps.PracticeAjaxConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
