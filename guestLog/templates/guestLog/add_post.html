@@ -1,0 +1,22 @@
+<h1>Add a post</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+    
+  </form>
+  
+  <input type="button" value="Go back" onclick="goBack()">
+  <input type="button" value="See all posts" onclick="goAll()">
+
+  <script>
+    function goBack(){
+        window.location.href = "{% url 'guestLog:index' %}"
+    }
+    function goAll(){
+        window.location.href="{% url 'guestLog:posts' %}"
+    }
+  </script>

@@ -1,0 +1,23 @@
+<h1>Post list</h1>
+
+{% if post_list %}
+    <ul>
+        {% for post in post_list %}
+        <li style="color:blue;font-size:large;">
+            {{ post.post_text }}<br><span style="color:black;font-style: italic;font-size: small;">
+                - {{ post.pubdate|date:'M j, Y, g:i:s a' }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no posts!</p>
+
+{% endif %}
+
+<input type="button" onclick="goHome()" value="Home">
+
+<script>
+    function goHome(){
+        window.location.href = "{% url 'guestLog:index' %}"
+    }
+</script>

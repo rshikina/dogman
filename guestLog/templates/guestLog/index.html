@@ -18,7 +18,7 @@
     <h1>Title page:</h1>
         <label id="titleLabel">Hello</label>
 </div>
-        <p>Making a guest log</p>
+        <p>Change the page title.</p>
 <input type="text" id="inputText">
 <input type="button" id="enterBtn" onclick="getInput()" value="Enter"></button>
 
@@ -27,33 +27,26 @@
 {% if titles_list %}
     <ul>
         {% for title in titles_list %}
-            <li>{{ title.submitTitle_text }}</li>
+            <li>{{ title.post_text }}</li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
 
-
-<h1>This section is a form</h1>
-<form action="{% url 'guestLog:index' %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        <input type="text" id="inputText">
-        <input type="button" id="enterBtn" onclick="getInput()" value="Enter">
-    </fieldset>
-    <input type="submit" value="Vote">
-    </form>
-
-
-
-
-
-
+<input type = "button" onclick="goList()" value="See all posts">
+<h1>Add a post</h1>
+<input type="button" id="createPostBtn" onclick="createPost()" value="New Post">
 
 <script>
     function getInput(){
         addTitle = document.getElementById("inputText").value;
         document.getElementById("titleLabel").innerHTML = addTitle;
+    }
+    function createPost(){
+        window.location.href = "{% url 'guestLog:add_post' %}"
+    }
+    function goList(){
+        window.location.href = "{% url 'guestLog:posts' %}"
     }
 </script>
