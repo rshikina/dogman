@@ -17,6 +17,7 @@
 <div id="titleBar">
     <h1>Title page:</h1>
         <label id="titleLabel">Hello</label>
+    <input type="button" onclick="goHome()" value="Home">
 </div>
         <p>Change the page title.</p>
 <input type="text" id="inputText">
@@ -48,5 +49,8 @@
     }
     function goList(){
         window.location.href = "{% url 'guestLog:posts' %}"
+    }
+    function goHome(){
+        window.location.href = "{% url 'landingPage:home' %}"
     }
 </script>
