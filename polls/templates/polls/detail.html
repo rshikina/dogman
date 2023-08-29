@@ -1,3 +1,8 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+</head>
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
@@ -11,3 +16,4 @@
 <input type="submit" value="Vote">
 <input type="button" onclick="location.href='{% url 'landingPage:home' %}'" value="Home">
 </form>
+</html>
