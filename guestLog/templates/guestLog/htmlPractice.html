@@ -1,0 +1,38 @@
+<style>
+    table{
+        width: 100%;
+    }
+    tr {
+        height: 50px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-around;
+    }
+    td {
+     
+        border: 2px green solid;
+    }
+    .third{
+        flex: 2;
+    }
+    .second, .first{
+        flex: 1;
+        align-self: flex-end;
+    }
+</style>
+
+<html>
+    <table style="border: aquamarine 5px solid;">
+        <tr>
+            <td class="first">My first cell.</td>
+            <td class="second">My second cell.</td>
+            <td class="third">My third cell.</td>
+        </tr>
+        <tr>
+            <td class="first">My fourth cell</td>
+            <td class="second">My fifth cell</td>
+            <td class="third">My sixth cell</td>
+        </tr>
+    </table>
+</html>

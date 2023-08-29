@@ -1,17 +1,71 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Welcome to the Math Practice website</title>
+        <style>
+            html {
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            li{
+                list-style: none;
+                border: 1px black solid;
+                margin-bottom: 15px;
+                padding: 5px 5px 5px 5px;
+                border-radius: 10px;
+                flex: 1 50px;
+                display: flex;
+                align-items: center;
+                width: 60%;
+                min-width: 285px;
+                
+            }
+            /* color scheme
+            yellow; #EAC435
+            blue: #345995
+            ping: #E40066
+            green: #03CEA4
+            orange; #FB4D3D
+             */
+            li:nth-child(even){
+                background-color: #E40066;
+            }
+            li:nth-child(odd){
+                background-color: #03CEA4;
+            }
+            .listBox{
+                display: flex;
+                flex-direction: column;
+                
+            }
+            a {
+                color: #345995;
+                font-size: calc(.5px + 2rem);
+            }
+            li:nth-child(even) > a:hover{
+                color: #03CEA4; 
+                text-decoration: none;
+            }
+            li:nth-child(odd) > a:hover {
+                color: #EAC435;
+                text-decoration: none;
+            }
+            body{
+                background-color: gainsboro;
+            }
+        </style>
     </head>
 
     <body>
         <h1>Welcome to Rob's sample works. Thanks for visiting.</h1>
         <p>List of applications on this website:</p>
-        <li><a href="{% url 'polls:index' %}">Sample of a polling website</a></li>
-        <li><a href="{% url 'hello:index' %}">Mobile and workstation friendly calculator </a></li>
-        <li><a href="{% url 'hello:bubbleshooter' %}">Shoot the kid bubbleshooter game</a></li>
-        <li><a href="{% url 'hello:tictactoe' %}">Javascript TicTacToe game</a></li>
-        <li><a href="{% url 'guestLog:index' %}">Sample blogging site showing the use of database.</a></li>
+        <ul class="listBox">
+            <li><a href="{% url 'polls:index' %}">Sample of a polling website</a></li>
+            <li><a href="{% url 'hello:index' %}">Mobile and workstation friendly calculator </a></li>
+            <li><a href="{% url 'hello:bubbleshooter' %}">Shoot the kid bubbleshooter game</a></li>
+            <li><a href="{% url 'hello:tictactoe' %}">Javascript TicTacToe game</a></li>
+            <li><a href="{% url 'guestLog:index' %}">Sample blogging site showing the use of database.</a></li>
+        </ul>
     </body>
 </html>
 

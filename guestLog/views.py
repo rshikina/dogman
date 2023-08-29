@@ -31,8 +31,6 @@ def add_post(request):
         if form.is_valid():
             newPost = SinglePost(post_text = form.cleaned_data['post_text'])
             newPost.pubdate = datetime.now()
-            print(newPost.pubdate)
-            print(datetime.now())
             newPost.save()
             return HttpResponseRedirect(reverse('guestLog:posts'))
     else:
@@ -43,3 +41,7 @@ def add_post(request):
     }
 
     return render(request, 'guestLog/add_post.html', context)
+
+def htmlPractice(request):
+    return render(request, 'guestLog/htmlPractice.html')
+    
